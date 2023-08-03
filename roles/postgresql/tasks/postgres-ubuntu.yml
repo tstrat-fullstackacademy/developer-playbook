@@ -1,18 +1,18 @@
 - name: APT install PostgreSQL on Ubuntu 18
   become: yes
   apt:
-    update_cache: yes
+    # update_cache: yes
     state: present
-    name: 
+    name:
       - postgresql
       - python-psycopg2
   when: ansible_facts.distribution_major_version == '18'
 - name: APT install PostgreSQL on Ubuntu 20 or later
   become: yes
   apt:
-    update_cache: yes
+    # update_cache: yes
     state: present
-    name: 
+    name:
       - postgresql
       - python3-psycopg2
   when: ansible_facts.distribution_major_version | int >= 20
@@ -65,7 +65,7 @@
     contype: host
     method: trust
     users: all
-    address: '127.0.0.1/32'
+    address: "127.0.0.1/32"
 - name: Allow trusted localhost ipV6 connections
   become: yes
   become_user: postgres
@@ -74,11 +74,11 @@
     contype: host
     method: trust
     users: all
-    address: '::1/128'
+    address: "::1/128"
 - name: Reload postgresql
   become: yes
   become_user: root
-  command: service postgresql reload    
+  command: service postgresql reload
 # - name: Reload postgresql
 #   become: yes
 #   become_user: root
